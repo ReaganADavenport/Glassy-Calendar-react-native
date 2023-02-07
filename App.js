@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { BlurView } from '@react-native-community/blur';
+import { BlurView } from 'expo-blur';
 import { StyleSheet, Text, View, Image } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 
@@ -16,8 +16,11 @@ export default function App() {
     <View style={styles.container}>
       <Image source={image} style={styles.background}/>
       <View style={styles.glassy}>
-        <CalendarPicker onDateChange={setSelectedStartDate}/>
-        <Text style={styles.dateText}>Birthday: {startDate}</Text>
+        <BlurView intensity={40} tint="light">
+          <CalendarPicker onDateChange={setSelectedStartDate}/>
+          <Text style={styles.dateText}>Birthday: {startDate}</Text>
+        </BlurView>
+        
       </View>
       <StatusBar style="auto" />
       
@@ -40,9 +43,10 @@ const styles = StyleSheet.create({
   },
 
   glassy:{
-    backgroundColor: '#fff',
-    borderColor: '#000',
+    backgroundColor: 'transparent',
+    borderRadius: 50,
+    color: '#fff',
     position: 'absolute',
-    top: 150,
+    top: 200,
   }
 });
