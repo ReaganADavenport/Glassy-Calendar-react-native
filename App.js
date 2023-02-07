@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { BlurView } from '@react-native-community/blur';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
 
+import image from './assets/images/background.png';
 
 
 export default function App() {
@@ -12,12 +14,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>This will be a glassy calender with a space background</Text>
-      <View>
+      <Image source={image} style={styles.background}/>
+      <View style={styles.glassy}>
         <CalendarPicker onDateChange={setSelectedStartDate}/>
         <Text style={styles.dateText}>Birthday: {startDate}</Text>
       </View>
       <StatusBar style="auto" />
+      
     </View>
   );
 }
@@ -25,8 +28,21 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    // backgroundColor: '#000',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+  },
+
+  background:{
+    flex: 1,
+    width: '100%',
     justifyContent: 'center',
   },
+
+  glassy:{
+    backgroundColor: '#fff',
+    borderColor: '#000',
+    position: 'absolute',
+    top: 150,
+  }
 });
