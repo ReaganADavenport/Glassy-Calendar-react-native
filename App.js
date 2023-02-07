@@ -17,7 +17,7 @@ export default function App() {
       <Image source={image} style={styles.background}/>
       <View style={styles.glassy}>
         <BlurView intensity={40} tint="light">
-          <CalendarPicker onDateChange={setSelectedStartDate}/>
+          <CalendarPicker onDateChange={setSelectedStartDate} textStyle={{fontFamily: 'Cochin', color: '#fff',}}/>
           <Text style={styles.dateText}>Birthday: {startDate}</Text>
         </BlurView>
         
