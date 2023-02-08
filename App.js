@@ -1,19 +1,25 @@
 import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { BlurView } from 'expo-blur';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, Modal } from 'react-native';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 import CalendarPicker from 'react-native-calendar-picker';
 
 import image from './assets/images/background.png';
 
 
 export default function App() {
-
+  const [modalOpen, setModalOpen] = useState(false)
   const [selectedStartDate, setSelectedStartDate] = useState(null);
   const startDate = selectedStartDate ? selectedStartDate.format('YYYY-MM-DD').toString() : '';
 
   return (
     <View style={styles.container}>
+      <Modal visible={modalOpen} animationType="slide">
+        <View>
+          
+        </View>
+      </Modal>
       <Image source={image} style={styles.background}/>
       <View style={styles.glassy}>
         <BlurView intensity={40} tint="light">
