@@ -17,12 +17,16 @@ export default function App() {
       <Image source={image} style={styles.background}/>
       <View style={styles.glassy}>
         <BlurView intensity={40} tint="light">
-          <CalendarPicker onDateChange={setSelectedStartDate} textStyle={{fontFamily: 'Cochin', color: '#fff',}}/>
+          <CalendarPicker 
+            onDateChange={setSelectedStartDate} 
+            textStyle={{fontFamily: 'Cochin', color: '#fff', fontSize: 25,}}
+            selectedDayColor="#f0d7ef"
+          />
           <Text style={styles.dateText}>Birthday: {startDate}</Text>
         </BlurView>
         
       </View>
-      <StatusBar style="auto" />
+      <StatusBar style="light" />
       
     </View>
   );
