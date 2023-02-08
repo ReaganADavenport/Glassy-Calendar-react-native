@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { BlurView } from 'expo-blur';
 import { StyleSheet, Text, View, Image, Modal } from 'react-native';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
 import CalendarPicker from 'react-native-calendar-picker';
 
 import image from './assets/images/background.png';
@@ -15,12 +15,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Modal visible={modalOpen} animationType="slide">
-        <View>
-          
+     <Modal visible={modalOpen} animationType="slide">
+        <View style={styles.modal}>
+          <MaterialIcons name="close" size={24} color="black" onPress={() => setModalOpen(false)}/>
+          <Text>Hi I'm the modal :)</Text>
         </View>
       </Modal>
       <Image source={image} style={styles.background}/>
+      
+
       <View style={styles.glassy}>
         <BlurView intensity={40} tint="light">
           <CalendarPicker 
@@ -28,7 +31,8 @@ export default function App() {
             textStyle={{fontFamily: 'Cochin', color: '#fff', fontSize: 25,}}
             selectedDayColor="#f0d7ef"
           />
-          <Text style={styles.dateText}>Birthday: {startDate}</Text>
+          {/* <Text style={styles.dateText}>Birthday: {startDate}</Text> */}
+          <MaterialIcons name="add-circle" size={24} color="white" onPress={() => setModalOpen(true)} style={styles.modalButton}/>
         </BlurView>
         
       </View>
@@ -48,8 +52,9 @@ const styles = StyleSheet.create({
 
   background:{
     flex: 1,
-    width: '100%',
+    height: '100%',
     justifyContent: 'center',
+    width: '100%',
   },
 
   glassy:{
@@ -58,5 +63,13 @@ const styles = StyleSheet.create({
     color: '#fff',
     position: 'absolute',
     top: 200,
+  },
+
+  modalButton:{
+    margin: 8,
+  },
+
+  modal:{
+    top: 40,
   }
 });
