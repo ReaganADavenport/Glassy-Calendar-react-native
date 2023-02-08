@@ -17,22 +17,23 @@ export default function App() {
     <View style={styles.container}>
      <Modal visible={modalOpen} animationType="slide">
         <View style={styles.modal}>
-          <MaterialIcons name="close" size={24} color="black" onPress={() => setModalOpen(false)}/>
-          <Text>Hi I'm the modal :)</Text>
+          <MaterialIcons name="close" size={30} color="#fff" onPress={() => setModalOpen(false)}/>
+            <Text style={styles.dateText}>Hi I'm the modal :)</Text>
         </View>
       </Modal>
       <Image source={image} style={styles.background}/>
       
 
       <View style={styles.glassy}>
-        <BlurView intensity={40} tint="light">
+        <BlurView intensity={40} tint="light" style={styles.glassyCalendar}>
           <CalendarPicker 
             onDateChange={setSelectedStartDate} 
             textStyle={{fontFamily: 'Cochin', color: '#fff', fontSize: 25,}}
             selectedDayColor="#f0d7ef"
           />
-          {/* <Text style={styles.dateText}>Birthday: {startDate}</Text> */}
-          <MaterialIcons name="add-circle" size={24} color="white" onPress={() => setModalOpen(true)} style={styles.modalButton}/>
+          <Text style={styles.dateText}>Start Date: {startDate}</Text>
+          <MaterialIcons name="add-circle" size={30} color="white" onPress={() => setModalOpen(true)} style={styles.modalButton}/>
+          <Text style={styles.dateText}>Add Event</Text>
         </BlurView>
         
       </View>
@@ -58,11 +59,24 @@ const styles = StyleSheet.create({
   },
 
   glassy:{
-    backgroundColor: 'transparent',
-    borderRadius: 50,
+    // backgroundColor: 'transparent',
+    borderRadius: 20,
     color: '#fff',
     position: 'absolute',
-    top: 200,
+    top: 100,
+  },
+
+  glassyCalendar:{
+    borderRadius: 20,
+    color: '#fff',
+    position: 'absolute',
+    top: 100,
+  },
+
+  dateText:{
+    color:"#fff", 
+    fontFamily: 'Cochin', 
+    fontSize: 15,
   },
 
   modalButton:{
@@ -70,6 +84,9 @@ const styles = StyleSheet.create({
   },
 
   modal:{
+    flex: 1,
+    backgroundColor: "#2f1e8c",
+    color: "#fff",
     top: 40,
   }
 });
